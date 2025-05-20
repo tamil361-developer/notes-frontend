@@ -14,7 +14,7 @@ function Notecreatepage({ user }) {
   // Fetch notes for the current user
   React.useEffect(() => {
     if (token) {
-      fetch("http://127.0.0.1:8000/api/notes/", {
+      fetch("https://notes-backend-awu3.onrender.com/api/notes/", {
         headers: { Authorization: `Bearer ${token}` },
       })
         .then((res) => res.json())
@@ -39,7 +39,7 @@ function Notecreatepage({ user }) {
       return;
     }
     try {
-      const res = await fetch("http://127.0.0.1:8000/api/notes/", {
+      const res = await fetch("https://notes-backend-awu3.onrender.com/api/notes/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
