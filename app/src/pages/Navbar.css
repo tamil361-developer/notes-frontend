@@ -6,6 +6,8 @@
   left: 0;
   width: 100%;
   z-index: 1050;
+  background-color:  #d0dcf5;
+  
 }
 
 body {
@@ -15,10 +17,11 @@ body {
 .navbar-brand {
   font-weight: bold;
   letter-spacing: 1px;
+  color: black;
 }
 
 .navbar-nav .nav-link {
-  color: #fff !important;
+  color:black!important;
   margin-right: 10px;
   transition: color 0.2s;
 }
@@ -29,7 +32,7 @@ body {
 
 @media (max-width: 991px) {
   .navbar-nav {
-    background: #0d6efd;
+    background: #d0dcf5;
     padding: 1rem;
     border-radius: 0 0 10px 10px;
   }

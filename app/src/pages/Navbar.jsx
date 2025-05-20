@@ -22,7 +22,7 @@ function Navbar({ onLogout ,user}) {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary custom-navbar">
+    <nav className="navbar navbar-expand-lg  custom-navbar fw-bold ">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/" onClick={handleNavLinkClick}>
           {user}
@@ -49,10 +49,10 @@ function Navbar({ onLogout ,user}) {
             <li className="nav-item">
               <Link
                 className="nav-link"
-                to="/about"
+                to="/allnotes"
                 onClick={handleNavLinkClick}
               >
-                About
+                All Notes
               </Link>
             </li>
             <li className="nav-item">
