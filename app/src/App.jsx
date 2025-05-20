@@ -5,12 +5,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./pages/Home";
 
 function App() {
-  const [page, setPage] = useState(() => {
-    const t = localStorage.getItem("token");
-    return t ? "user" : "login";
-  });
+  const [page, setPage] = useState("login");
   const [token, setToken] = useState(localStorage.getItem("token") || "");
-  const [user, setUser] = useState(localStorage.getItem("username") || "");
+  const [user, setUser] = useState("");
+
+  
 
   // Registration form state
   const [regUsername, setRegUsername] = useState("");
