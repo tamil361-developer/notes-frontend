@@ -103,7 +103,7 @@ function Notecreatepage({ user }) {
     try {
       const res = await fetch(
         /* `http://127.0.0.1:8000/api/notes/${id}/`, */
-        `https://notes-backend-awu3.onrender.com/api/notes/${id}`, 
+        `https://notes-backend-awu3.onrender.com/api/notes/${id}/`, 
         {
         method: "PUT",
         headers: {
@@ -135,7 +135,7 @@ function Notecreatepage({ user }) {
     try {
       const res = await fetch(
         /* `http://127.0.0.1:8000/api/notes/${id}/`, */
-        "https://notes-backend-awu3.onrender.com/api/notes/${id}/",
+        `https://notes-backend-awu3.onrender.com/api/notes/${id}/`,
          {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
