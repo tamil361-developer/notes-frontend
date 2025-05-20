@@ -1,0 +1,59 @@
+/* Layout for Notecreatepage */
+.notecreatepage-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 3rem;
+}
+
+.notecreatepage-main {
+  flex: 1;
+}
+.userdetails {
+  padding: auto;
+    margin: auto;
+}
+
+
+/* Floating plus button */
+.plus-btn {
+  width: 56px;
+  height: 56px;
+  font-size: 32px;
+  position: fixed;
+  bottom: 34px;
+  right: 32px;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Note creation modal/card */
+.note-create-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2100;
+  width: 90vw;
+  max-width: 600px;
+  min-width: 320px;
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+}
+
+@media (max-width: 600px) {
+  .note-create-card {
+    width: 98vw;
+    max-width: 98vw;
+    min-width: unset;
+    padding: 1rem !important;
+  }
+  .plus-btn {
+    bottom: 16px;
+    right: 16px;
+  }
+}

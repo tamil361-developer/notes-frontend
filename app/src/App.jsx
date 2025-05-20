@@ -1,10 +1,16 @@
 import { useState } from "react";
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+import Home from "./pages/Home";
 
 function App() {
-  const [page, setPage] = useState("login");
+  const [page, setPage] = useState(() => {
+    const t = localStorage.getItem("token");
+    return t ? "user" : "login";
+  });
   const [token, setToken] = useState(localStorage.getItem("token") || "");
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState(localStorage.getItem("username") || "");
 
   // Registration form state
   const [regUsername, setRegUsername] = useState("");
@@ -22,15 +28,19 @@ function App() {
     e.preventDefault();
     setRegMsg("");
     try {
-      const res = await fetch("https://notes-backend-awu3.onrender.com/api/register/", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          username: regUsername,
-          email: regEmail,
-          password: regPassword,
-        }),
-      });
+      const res = await fetch(
+        "http://127.0.0.1:8000/api/register/",
+        /* "https://notes-backend-awu3.onrender.com/api/register/", */
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            username: regUsername,
+            email: regEmail,
+            password: regPassword,
+          }),
+        }
+      );
       const data = await res.json();
       if (res.ok) {
         setRegMsg("Registration successful! Please login.");
@@ -53,19 +63,24 @@ function App() {
     e.preventDefault();
     setLoginMsg("");
     try {
-      const res = await fetch("https://notes-backend-awu3.onrender.com/api/login/", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          username: loginUsername,
-          password: loginPassword,
-        }),
-      });
+      const res = await fetch(
+        "http://127.0.0.1:8000/api/login/",
+       /*  "https://notes-backend-awu3.onrender.com/api/login/", */
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            username: loginUsername,
+            password: loginPassword,
+          }),
+        }
+      );
       const data = await res.json();
       if (res.ok && data.access) {
         setToken(data.access);
         localStorage.setItem("token", data.access);
         setUser(loginUsername);
+        localStorage.setItem("username", loginUsername);
         setPage("user");
       } else {
         setLoginMsg(data.error || "Login failed");
@@ -80,82 +95,106 @@ function App() {
     setToken("");
     setUser("");
     localStorage.removeItem("token");
+    localStorage.removeItem("username");
     setPage("login");
   };
 
   // User page (protected)
   if (page === "user" && token) {
-    return (
-      <div className="card">
-        <h2>Welcome, {user}!</h2>
-        <button onClick={handleLogout}>Logout</button>
-      </div>
-    );
+    return <Home user={user} onLogout={handleLogout} />;
   }
 
   // Registration page
   if (page === "register") {
     return (
-      <div className="card">
-        <h2>Register</h2>
-        <form onSubmit={handleRegister}>
-          <input
-            type="text"
-            placeholder="Username"
-            value={regUsername}
-            onChange={(e) => setRegUsername(e.target.value)}
-            required
-          />
-          <br />
-          <input
-            type="email"
-            placeholder="Email"
-            value={regEmail}
-            onChange={(e) => setRegEmail(e.target.value)}
-            required
-          />
-          <br />
-          <input
-            type="password"
-            placeholder="Password"
-            value={regPassword}
-            onChange={(e) => setRegPassword(e.target.value)}
-            required
-          />
-          <br />
-          <button type="submit">Register</button>
-        </form>
-        <p style={{ color: "red" }}>{regMsg}</p>
-        <button onClick={() => setPage("login")}>Back to Login</button>
+      <div className="container mt-5">
+        <div className="card p-4 shadow-sm mx-auto" style={{ maxWidth: 400 }}>
+          <h2 className="mb-4 text-center">Register</h2>
+          <form onSubmit={handleRegister}>
+            <div className="mb-3">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Username"
+                value={regUsername}
+                onChange={(e) => setRegUsername(e.target.value)}
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <input
+                type="email"
+                className="form-control"
+                placeholder="Email"
+                value={regEmail}
+                onChange={(e) => setRegEmail(e.target.value)}
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <input
+                type="password"
+                className="form-control"
+                placeholder="Password"
+                value={regPassword}
+                onChange={(e) => setRegPassword(e.target.value)}
+                required
+              />
+            </div>
+            <button type="submit" className="btn btn-primary w-100">
+              Register
+            </button>
+          </form>
+          <p className="text-danger text-center mt-2">{regMsg}</p>
+          <button
+            className="btn btn-link w-100 mt-2"
+            onClick={() => setPage("login")}
+          >
+            Back to Login
+          </button>
+        </div>
       </div>
     );
   }
 
   // Login page
   return (
-    <div className="card">
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <input
-          type="text"
-          placeholder="Username"
-          value={loginUsername}
-          onChange={(e) => setLoginUsername(e.target.value)}
-          required
-        />
-        <br />
-        <input
-          type="password"
-          placeholder="Password"
-          value={loginPassword}
-          onChange={(e) => setLoginPassword(e.target.value)}
-          required
-        />
-        <br />
-        <button type="submit">Login</button>
-      </form>
-      <p style={{ color: "red" }}>{loginMsg}</p>
-      <button onClick={() => setPage("register")}>Register</button>
+    <div className="container mt-5">
+      <div className="card p-4 shadow-sm mx-auto" style={{ maxWidth: 400 }}>
+        <h2 className="mb-4 text-center">Login</h2>
+        <form onSubmit={handleLogin}>
+          <div className="mb-3">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Username"
+              value={loginUsername}
+              onChange={(e) => setLoginUsername(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-3">
+            <input
+              type="password"
+              className="form-control"
+              placeholder="Password"
+              value={loginPassword}
+              onChange={(e) => setLoginPassword(e.target.value)}
+              required
+            />
+          </div>
+          <button type="submit" className="btn btn-primary w-100">
+            Login
+          </button>
+        </form>
+        <p className="text-danger text-center mt-2">{loginMsg}</p>
+        <button
+          className="btn btn-link w-100 mt-2"
+          onClick={() => setPage("register")}
+        >
+          Register
+        </button>
+      </div>
     </div>
   );
 }
