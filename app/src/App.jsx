@@ -29,8 +29,8 @@ function App() {
     setRegMsg("");
     try {
       const res = await fetch(
-        "http://127.0.0.1:8000/api/register/",
-        /* "https://notes-backend-awu3.onrender.com/api/register/", */
+        /* "http://127.0.0.1:8000/api/register/", */
+        "https://notes-backend-awu3.onrender.com/api/register/",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -64,8 +64,8 @@ function App() {
     setLoginMsg("");
     try {
       const res = await fetch(
-        "http://127.0.0.1:8000/api/login/",
-       /*  "https://notes-backend-awu3.onrender.com/api/login/", */
+        /* "http://127.0.0.1:8000/api/login/", */
+        "https://notes-backend-awu3.onrender.com/api/login/",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
