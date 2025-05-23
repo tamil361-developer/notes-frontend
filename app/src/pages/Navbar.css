@@ -1,17 +1,17 @@
 .custom-navbar {
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-  font-family: 'Segoe UI', Arial, sans-serif;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  font-family: "Merriweather", serif;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1050;
-  background-color:  #d0dcf5;
-  
+  background-color: #d0dcf5;
 }
 
 body {
   padding-top: 56px; /* Height of navbar for spacing */
+  
 }
 
 .navbar-brand {
@@ -21,13 +21,14 @@ body {
 }
 
 .navbar-nav .nav-link {
-  color:black!important;
+  color: black !important;
   margin-right: 10px;
   transition: color 0.2s;
 }
 
-.navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
-  color: #ffd700 !important;
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: #3f18ee !important;
 }
 
 @media (max-width: 991px) {

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./Allnotes.css";
 
 function Allnotes({ user }) {
   const [notes, setNotes] = useState([]);
@@ -114,11 +115,11 @@ function Allnotes({ user }) {
   };
 
   return (
-    <div className="container mt-4">
-      <h1 className="text-primary">All Notes</h1>
+    <div className="container mt-5">
+      <h1 className="text-primary anhead fw-bold ">All Notes</h1>
       <div className="mb-3">
         <label htmlFor="categorySelect" className="form-label">
-          <h5 className="mt-3">Select Category:</h5>
+          <h5 className="mt-3 anhead fw-bold">Select Category:</h5>
         </label>
         <select
           id="categorySelect"

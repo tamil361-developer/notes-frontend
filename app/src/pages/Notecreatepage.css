@@ -1,3 +1,8 @@
+.nchead {
+  font-family: "Merriweather", serif;
+  font-size: 2rem;
+}
+
 /* Layout for Notecreatepage */
 .notecreatepage-container {
   display: flex;

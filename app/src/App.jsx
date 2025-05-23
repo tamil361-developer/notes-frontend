@@ -107,9 +107,9 @@ function App() {
   if (page === "register") {
     return (
       <div className="container mt-5">
-        <h1 className="text-center ">My Notes</h1>
+        <h1 className="text-center registerhead fw-bold">My Notes</h1>
         <div className="card p-4 shadow-lg mx-auto mt-5" style={{ maxWidth: 400 }}>
-          <h2 className="mb-4 text-center">Register</h2>
+          <h2 className="mb-4 text-center registerhead fw-bold">Register</h2>
           <form onSubmit={handleRegister}>
             <div className="mb-3">
               <input
@@ -160,9 +160,9 @@ function App() {
   // Login page
   return (
     <div className="container mt-5">
-      <h1 className="text-center ">My Notes</h1>
+      <h1 className="text-center loginhead fw-bold">My Notes</h1>
       <div className="card p-4 shadow-lg mx-auto mt-5" style={{ maxWidth: 400 }}>
-        <h2 className="mb-4 text-center ">Login</h2>
+        <h2 className="mb-4 text-center loginhead fw-bold ">Login</h2>
         <form onSubmit={handleLogin}>
           <div className="mb-3">
             <input

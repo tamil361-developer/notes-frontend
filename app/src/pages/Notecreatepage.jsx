@@ -164,7 +164,7 @@ function Notecreatepage({ user }) {
 
         {showForm && (
           <div className="card  p-4 shadow-sm mx-auto note-create-card animate__animated animate__fadeIn">
-            <h1 className="mb-4 text-center">Create a new note</h1>
+            <h1 className="mb-4 text-center nchead">Create a new note</h1>
             <form onSubmit={handleSubmit}>
               <div className="mb-3">
                 <label className="form-label">Title:</label>
@@ -230,13 +230,13 @@ function Notecreatepage({ user }) {
 
         {/* Show notes list */}
         <div className="row">
-          <h3 className="text-danger ">Your Notes</h3>
+          <h3 className=" nchead fw-bold">My Notes</h3>
           {notes.length === 0 && (
             <div className="text-muted">No notes yet.</div>
           )}
 
           {notes.map((note) => (
-            <div className="col-lg-6">
+            <div className="col-lg-6 mt-3">
               <div key={note.id} className="card note-card mt-2">
                 <div className="card-body">
                   {editId === note.id ? (

@@ -9,6 +9,8 @@ function Navbar({ onLogout ,user}) {
 
   // Toggle collapse for mobile
   const handleToggle = () => {
+
+    
     if (navCollapse.current) {
       navCollapse.current.classList.toggle("show");
     }
@@ -24,8 +26,9 @@ function Navbar({ onLogout ,user}) {
   return (
     <nav className="navbar navbar-expand-lg  custom-navbar fw-bold ">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/" onClick={handleNavLinkClick}>
-          {user}
+        <Link className="navbar-brand " to="/" onClick={handleNavLinkClick}>
+          
+          <h2 className="fw-bold">{user}</h2>
         </Link>
         <button
           className="navbar-toggler"
